@@ -16,9 +16,12 @@ def impute_data(data):
 			print data[name]
 	return data
 
+def get_data(path):
+	return pd.read_excel(path, 'titanic3')
+
+
+
 if __name__ == "__main__":
-	data_path = "../../data/titanic3.xls"
-	data = pd.read_excel(data_path, 'titanic3')
+	path = "../../data/titanic3.xls"
+	data = get_data(path)
 	print impute_data(data)
-	# print data['pclass']
-	# print impute_data(data)
