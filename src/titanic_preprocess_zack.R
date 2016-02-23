@@ -3,10 +3,6 @@
 # Preprocessing data
 ######################################################
 
-# Boom.  Taylor is editing.  Su is going to win the data test thingy.
-#blah blah blah
-
-
 #Converts categorical strings in titanic dataset to numerical data
 #Input: Titanic dataset
 #Output: numerical titanic data
@@ -58,8 +54,10 @@ library(gdata)
 
 
 # Per-user configuration
-excel_path <- "/Users/zverham/Documents/School/Masters/SemesterTwo/SYS6016/sys6016_project1/data/titanic3.xls"
-csv_path <-  "/Users/zverham/Documents/School/Masters/SemesterTwo/SYS6016/sys6016_project1/data/titanic_preprocessed.csv"
+# excel_path <- "/Users/zverham/Documents/School/Masters/SemesterTwo/SYS6016/sys6016_project1/data/titanic3.xls"
+# csv_path <-  "/Users/zverham/Documents/School/Masters/SemesterTwo/SYS6016/sys6016_project1/data/titanic_preprocessed.csv"
+excel_path <- "~/Desktop/UVA Spring 2016/Machine Learning | SYS 6016/HW/Titanic Project/titanic3.xls"
+csv_path <- "~/Desktop/UVA Spring 2016/Machine Learning | SYS 6016/HW/Titanic Project/titanic_preprocessed.csv"
 
 # Load data
 titanic = read.xls(excel_path)
@@ -75,13 +73,19 @@ summary(titanic$embarked)
 
 # create matrix of only the numeric data
 titanic.numeric = convert_to_numeric(titanic)
-titanic.knn = knnImputation(titanic.numeric, k=10)
+titanic.knn = knnImputation(titanic.numeric, k=10) # imputes 263 age values, 1 fare, 2 embarked
 sum(is.na(titanic.knn))
+
+# colSums(is.na(titanic)) 
+# colSums(is.na(titanic.numeric)) 
+# colSums(is.na(titanic.knn)) 
 
 colSums(is.na(titanic.knn)) 
 summary(titanic.numeric$embarked)
 
 symnum(cor(titanic.knn, use = "complete.obs"))
+
+summary(titanic.knn$fare)
 
 write.csv(titanic.knn, csv_path, row.names=FALSE)
 
