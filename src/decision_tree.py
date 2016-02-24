@@ -17,7 +17,7 @@ from sklearn.metrics import confusion_matrix
 csv_path = "/Users/zverham/Documents/School/Masters/SemesterTwo/SYS6016/sys6016_project1/data/titanic_preprocessed.csv"
 
 #features from our preprocessed dataset we want to consider
-feature_names = ["pclass", "survived", "sex", "sibsp", "parch", "age.bin", "fare"]
+feature_names = ["pclass", "survived", "sex", "sibsp", "parch", "age.bin"]
 
 #load data, split into attributes / classifications
 titanic = pd.read_csv(csv_path)
